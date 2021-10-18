@@ -6,6 +6,7 @@ export default function Navbar() {
     <nav>
     <NavLink exact to="/">Home</NavLink> 
     <NavLink exact to="/clothes">Clothes</NavLink> 
+    <NavLink exact to="/coffee">Coffee</NavLink> 
     <NavLink exact to="/add">Add</NavLink> 
    </nav>
   )
