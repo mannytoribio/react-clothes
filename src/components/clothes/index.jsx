@@ -16,7 +16,8 @@ function Clothes() {
         : clothing.map(item => {
           return (
             <div key={item.id}>
-              <h3>{item.brand} {item.type}</h3>
+              <h3>{item.brand} {item.color} {item.style} {item.type}</h3>
+              <p>${item.price}</p>
             </div>
           )
         })

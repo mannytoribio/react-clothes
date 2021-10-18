@@ -7,17 +7,13 @@ import Home from './components/home';
 import Clothes from './components/clothes';
 import Add from './components/add';
 import './App.css'
+import Navbar from './components/shared/Navbar';
 
 function App() {
   return (
     <Router>
-      <header>
-        <nav>
-         <NavLink exact to="/">Home</NavLink> 
-         <NavLink exact to="/clothes">Clothes</NavLink> 
-         <NavLink exact to="/add">Add</NavLink> 
-        </nav>
-      </header>
+      <Navbar />
+      <main>
     <Switch>
       <Route exact path='/' component={Home} />
       <Route path='/clothes' component={Clothes} />
@@ -26,6 +22,7 @@ function App() {
         <h1>404 - Page Not Found</h1>
       </Route>
     </Switch>
+    </main>
     </Router>
   )
 }

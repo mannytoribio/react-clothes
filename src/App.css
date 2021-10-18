@@ -1,6 +1,6 @@
 nav {
   padding: 1em; 
-  backgrounColor: darksalmon;
+  background-color: darksalmon;
   display: flex;
-  justifyContent: 'space-between'
+  justify-content: space-between
 }
