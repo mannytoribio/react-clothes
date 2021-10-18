@@ -1,0 +1,15 @@
+button {
+  background-color: #ff216e;
+  padding: 8px 16 px;
+  border: 1px solid #ff216e;
+  border-radius: 4px;
+  color: white;
+  margin-left: 1em;
+  transition: 0.3s;
+}
+
+button.active {
+  background-color: white;
+  color: #ff216e;
+}
+

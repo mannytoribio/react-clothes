@@ -1,4 +1,5 @@
 import { useState, useEffect  } from "react";
+import './coffee.css'
 
 export default function Coffee () {
   // create a state variable to hold our coffee list
@@ -17,8 +18,8 @@ export default function Coffee () {
   return (
     <>
       <h1>Coffee</h1>
-      <button onClick={() => setTemperature('hot')}>Hot</button> &nbsp;
-      <button onClick={() => setTemperature('iced')}>Iced</button>
+      <button className={(temperature === 'hot') ? 'active' : ''} onClick={() => setTemperature('hot')}>Hot</button> &nbsp;
+      <button className={(temperature === 'iced') ? 'active' : ''} onClick={() => setTemperature('iced')}>Iced</button>
       {!coffeeList
         ? <h2>Loading...</h2>
         : coffeeList.map(item => {
