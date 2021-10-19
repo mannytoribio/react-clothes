@@ -1,3 +1,4 @@
+import { useState, createContext, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,22 +12,31 @@ import Navbar from './components/shared/Navbar';
 import Coffee from './components/coffee'
 import Login from './components/login';
 
+export const AuthContext = createContext(null)
+
 function App() {
+  const [user, setUser] = useState()
+  useEffect(() => {
+    const oldUser = JSON.parse(localStorage.getItem(user))
+    setUser(oldUser)
+  }, [])
   return (
     <Router>
-      <Navbar />
-      <main>
-    <Switch>
-      <Route exact path='/' component={Home} />
-      <Route path='/clothes' component={Clothes} />
-      <Route path='/coffee' component={Coffee} />
-      <Route path='/login' component={Login} />
-      <Route path='/add' component={Add} />
-      <Route path="/">
-        <h1>404 - Page Not Found</h1>
-      </Route>
-    </Switch>
-    </main>
+      <AuthContext.Provider value={{ user, setUser }}>
+        <Navbar />
+          <main>
+          <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/clothes' component={Clothes} />
+              <Route path='/coffee' component={Coffee} />
+              <Route path='/login' component={Login} />
+              <Route path='/add' component={Add} />
+              <Route path="/">
+                <h1>404 - Page Not Found</h1>
+              </Route>
+          </Switch>
+        </main>
+      </ AuthContext.Provider>
     </Router>
   )
 }

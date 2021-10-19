@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { initializeApp } from "firebase/app"
 // TODO: Add SDKs for Firebase products that you want to use
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { AuthContext } from "../../App"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAvnYkRACnEQFUoa_Rk06kTPIc56-ZiUAc",
@@ -17,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export default function Login () {
+  const { setUser } =useContext(AuthContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   let history = useHistory()
@@ -36,6 +38,7 @@ export default function Login () {
   const didLogin = (user) => {
     localStorage.setItem('userId', user.id)
     localStorage.setItem('user', JSON.stringify(user))
+    setUser(user)
     history.push('/add')
   }
   return (
